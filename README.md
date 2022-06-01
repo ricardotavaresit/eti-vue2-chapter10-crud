@@ -2,7 +2,7 @@
 
 <h2>Chapter 10 - Advanced operations on components - CRUD</h2>
 
-- Class 01: Communication between components in Vue JS
+- Class 06: Prepare project to-do list in Vue JS
 
 
 ## Technologies used
