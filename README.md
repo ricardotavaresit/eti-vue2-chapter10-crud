@@ -3,6 +3,7 @@
 <h2>Chapter 10 - Advanced operations on components - CRUD</h2>
 
 - Class 06: Prepare project to-do list in Vue JS
+- Class 07: Bootstrap installation and cinfiguration in Vue JS
 
 
 ## Technologies used
