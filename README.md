@@ -5,7 +5,7 @@
 - Class 06: Prepare project to-do list in Vue JS
 - Class 07: Bootstrap installation and configuration in Vue JS
 - Class 08: To-do list in Vue JS
-- Class 09: Create task and add To-do list in Vue JS
+- Class 09: Create task and insert To-do list in Vue JS
 
 
 ## Technologies used
