@@ -2,7 +2,7 @@
   <div>
     <h2>{{ title }}</h2>
 
-    <form class="form form-inline" v-on:submit.prevent="save">
+    <form class="form form-inline" v-on:submit.prevent="onSubmit">
       <input type="text" placeholder="Task name" v-model="task.name" />
       <button type="submit" class="btn btn-primary">Send</button>
     </form>
@@ -20,7 +20,9 @@
           <td>{{ task.id }}</td>
           <td>{{ task.name }}</td>
           <td>
-            <a class="btn btn-primary" href="">Edit</a>
+            <a class="btn btn-primary" href="" v-on:click.prevent="edit(index)"
+              >Edit</a
+            >
             <a class="btn btn-danger" href="">Delete</a>
           </td>
         </tr>
@@ -45,14 +47,36 @@ export default {
         id: "",
         name: "",
       },
+      updating: false,
+      updatedIndex: "",
     };
   },
   methods: {
+    onSubmit() {
+      if (this.updating) {
+        this.update();
+        return;
+      }
+      this.save();
+    },
     save() {
       this.tasks.push({
         id: this.tasks.length + 1,
         name: this.task.name,
       });
+      this.clearForm();
+    },
+    edit(index) {
+      this.task = this.tasks[index];
+      this.updatedIndex = index;
+      this.updating = true;
+    },
+    update() {
+      this.tasks[this.updatedIndex] = this.task;
+      this.updating = false;
+      this.clearForm();
+    },
+    clearForm() {
       this.task = {
         id: "",
         name: "",
