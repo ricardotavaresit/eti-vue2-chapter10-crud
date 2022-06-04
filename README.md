@@ -7,6 +7,7 @@
 - Class 08: To-do list in Vue JS
 - Class 09: Create task and insert To-do list in Vue JS
 - Class 10: Update task and update To-do list in Vue JS
+- Class 11: Delete task and update To-do list in Vue JS
 
 
 ## Technologies used
