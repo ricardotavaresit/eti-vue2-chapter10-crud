@@ -9,6 +9,7 @@
 - Class 10: Update task and update To-do list in Vue JS
 - Class 11: Delete task and update To-do list in Vue JS
 - Class 12: Filters for To-do list in Vue JS
+- Class 13: Filters tasks by Id in Vue JS
 
 
 ## Technologies used
