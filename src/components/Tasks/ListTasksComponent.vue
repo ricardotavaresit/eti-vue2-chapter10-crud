@@ -89,7 +89,6 @@ export default {
     },
     destroy(index) {
       this.tasks.splice(index)
-      alert(index);
     },
   },
 };
