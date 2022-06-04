@@ -28,13 +28,13 @@
           <td>{{ task.id }}</td>
           <td>{{ task.name }}</td>
           <td>
-            <a class="btn btn-primary" href="" v-on:click.prevent="edit(index)"
+            <a class="btn btn-primary" href="" v-on:click.prevent="edit(task.id)"
               >Edit</a
             >
             <a
               class="btn btn-danger"
               href=""
-              v-on:click.prevent="destroy(index)"
+              v-on:click.prevent="destroy(task.id)"
               >Delete</a
             >
           </td>
@@ -80,9 +80,9 @@ export default {
       });
       this.clearForm();
     },
-    edit(index) {
-      this.task = this.tasks[index];
-      this.updatedIndex = index;
+    edit(id) {
+      this.updatedIndex = this.findIndexItem(id);
+      this.task = this.tasks[this.updatedIndex];
       this.updating = true;
     },
     update() {
@@ -96,9 +96,13 @@ export default {
         name: "",
       };
     },
-    destroy(index) {
-      this.tasks.splice(index);
+    destroy(id) {
+      let index = this.findIndexItem(id);
+      this.tasks.splice(index, 1);
     },
+    findIndexItem(id){
+      return this.tasks.findIndex( task => task.id === id);
+    }
   },
   computed: {
     filteredItems() {
