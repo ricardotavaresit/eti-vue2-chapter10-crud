@@ -23,7 +23,12 @@
             <a class="btn btn-primary" href="" v-on:click.prevent="edit(index)"
               >Edit</a
             >
-            <a class="btn btn-danger" href="">Delete</a>
+            <a
+              class="btn btn-danger"
+              href=""
+              v-on:click.prevent="destroy(index)"
+              >Delete</a
+            >
           </td>
         </tr>
       </tbody>
@@ -81,6 +86,10 @@ export default {
         id: "",
         name: "",
       };
+    },
+    destroy(index) {
+      this.tasks.splice(index)
+      alert(index);
     },
   },
 };
