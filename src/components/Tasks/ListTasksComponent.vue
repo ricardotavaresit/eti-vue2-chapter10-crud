@@ -2,11 +2,19 @@
   <div>
     <h2>{{ title }}</h2>
 
-    <form class="form form-inline" v-on:submit.prevent="onSubmit">
-      <input type="text" placeholder="Task name" v-model="task.name" />
-      <button type="submit" class="btn btn-primary">Send</button>
-    </form>
-
+    <div class="row">
+      <div class="col">
+        <form class="form form-inline" v-on:submit.prevent="onSubmit">
+          <input type="text" placeholder="Search" v-model="filter" />
+        </form>
+      </div>
+      <div class="col">
+        <form class="form form-inline" v-on:submit.prevent="onSubmit">
+          <input type="text" placeholder="Task name" v-model="task.name" />
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -16,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-bind:key="index" v-for="(task, index) in tasks">
+        <tr v-bind:key="index" v-for="(task, index) in filteredItems">
           <td>{{ task.id }}</td>
           <td>{{ task.name }}</td>
           <td>
@@ -54,6 +62,7 @@ export default {
       },
       updating: false,
       updatedIndex: "",
+      filter: "",
     };
   },
   methods: {
@@ -88,7 +97,32 @@ export default {
       };
     },
     destroy(index) {
-      this.tasks.splice(index)
+      this.tasks.splice(index);
+    },
+  },
+  computed: {
+    filteredItems() {
+      if (!this.filter) {
+        return this.tasks;
+      }
+
+      /*** Version 1
+      return this.tasks.filter((task) => {
+        return task.name.indexOf(this.filter) > -1;
+      });
+      */
+
+      /*** Version 2
+      return this.tasks.filter((task) => {
+        return task["name"].toLowerCase().includes(this.filter.toLowerCase());
+      });
+      */
+
+      /* Version 3*/
+      return this.tasks.filter(
+        (task) =>
+          task.name.toLowerCase().indexOf(this.filter.toLowerCase()) > -1
+      );
     },
   },
 };
